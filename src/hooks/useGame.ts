@@ -45,7 +45,7 @@ useEffect(() => {
     return () => controller.abort();
   }, []);
 
-  return {games,error};
+  return {isLoading,games,error};
 
 }
 
