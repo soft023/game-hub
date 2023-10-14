@@ -1,9 +1,11 @@
-import React from "react";
-import useGenre from "../hooks/useGenre";
+import useData from "../hooks/useData";
 import GenreItem from "./GenreItem";
+import { Genre } from "../hooks/useGenre";
 
 const GenreList = () => {
-  const { isLoading, genres, error } = useGenre();
-  return genres.map((gen) => <GenreItem genres={gen}></GenreItem>);
+  const { isLoading, data, error } = useData<Genre>("/genres");
+  return data.map((dat, index) => (
+    <GenreItem key={index} genres={dat}></GenreItem>
+  ));
 };
 export default GenreList;

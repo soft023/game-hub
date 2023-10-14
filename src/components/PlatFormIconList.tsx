@@ -30,8 +30,8 @@ const PlatFormIconList = ({ platforms }: Props) => {
 
   return (
     <HStack marginY={2} justifyContent={"space-between"}>
-      {platforms.map((plat) => (
-        <Icon as={IconMap[plat.slug]} color={"gray.500"} />
+      {platforms.map((plat, index) => (
+        <Icon key={index} as={IconMap[plat.slug]} color={"gray.500"} />
       ))}
     </HStack>
   );
