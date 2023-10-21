@@ -1,11 +1,14 @@
 import useData from "../hooks/useData";
 import GenreItem from "./GenreItem";
-import { Genre } from "../hooks/useGenre";
+import useGenre, { Genre } from "../hooks/useGenre";
 import { Spinner } from "@chakra-ui/react";
 import GenreSkeleton from "./GenreSkeleton";
 
-const GenreList = () => {
-  const { isLoading, data, error } = useData<Genre>("/genres");
+interface Props {
+  onSelectGenre: (gen: Genre) => void;
+}
+const GenreList = ({ onSelectGenre }: Props) => {
+  const { isLoading, data, error } = useGenre();
   const skeGenre = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   // if (isLoading)
   //   return (
@@ -28,7 +31,11 @@ const GenreList = () => {
         ))}
 
       {data.map((dat, index) => (
-        <GenreItem key={index} genres={dat}></GenreItem>
+        <GenreItem
+          key={index}
+          genres={dat}
+          onClickGenre={(dat) => onSelectGenre(dat)}
+        ></GenreItem>
       ))}
     </>
   );

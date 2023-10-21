@@ -12,9 +12,7 @@ export interface Genre {
   //   count: number;
   //   results: Genre[];
   // }
-const useGenre = () =>{
-
-  return useData;
+const useGenre = () =>useData<Genre>("/genres");
 // const [genres, setGenres] = useState<Genre[]>([]);
 // const [error, setErrors] = useState("");
 // const [isLoading, setLoading] = useState(false);
@@ -41,6 +39,5 @@ const useGenre = () =>{
 
 //   return {isLoading,genres,error};
 
-}
 
 export default useGenre;

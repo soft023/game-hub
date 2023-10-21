@@ -1,6 +1,7 @@
 // import{ useEffect, useState } from "react";
 // import apiClient, { CanceledError } from "../services/api-client";
 import useData from "./useData";
+import { Genre } from "./useGenre";
 
 
 
@@ -21,8 +22,9 @@ export interface Game {
   //   count: number;
   //   results: Game[];
   // }
- const useGame = () =>{
-  return useData;
+ const useGame = (selectedGenre:Genre | null) => useData<Game>('/games',{params:{
+  genres : selectedGenre?.id
+ }},[selectedGenre?.id]);
 // const [games, setGames] = useState<Game[]>([]);
 // const [error, setErrors] = useState("");
 // const [isLoading, setLoading] = useState(false);
@@ -49,6 +51,6 @@ export interface Game {
 
 //   return {isLoading,games,error};
 
-}
+
 
 export default useGame;

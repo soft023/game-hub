@@ -1,5 +1,6 @@
 import{ useEffect, useState } from "react";
 import apiClient, { CanceledError } from "../services/api-client";
+import { AxiosRequestConfig } from "axios";
 
 
 
@@ -9,7 +10,7 @@ import apiClient, { CanceledError } from "../services/api-client";
   }
 
 
-const useData = <T>(endpoint:string) =>{
+const useData = <T>(endpoint:string, requestConfig?: AxiosRequestConfig, deps?:any[]) =>{
 const [data, setData] = useState<T[]>([]);
 const [error, setErrors] = useState("");
 const [isLoading, setLoading] = useState(false);
@@ -21,7 +22,7 @@ useEffect (() => {
 
     apiClient
       .get<DataProps<T>>(endpoint, {
-        signal: controller.signal,
+        signal: controller.signal,...requestConfig
       }).then((res) => {
         setData(res.data.results);
         setLoading(false);
@@ -32,7 +33,7 @@ useEffect (() => {
         setLoading(false);
       });
     return () => controller.abort();
-  }, []);
+  }, deps? [...deps]: []);
 
   return {isLoading,data,error};
 

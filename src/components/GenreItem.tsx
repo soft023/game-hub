@@ -1,12 +1,13 @@
 import React from "react";
 import { Genre } from "../hooks/useGenre";
-import { List, ListItem, Image, Text, HStack } from "@chakra-ui/react";
+import { List, ListItem, Image, Button, HStack } from "@chakra-ui/react";
 import imgCropper from "../services/img-cropper";
 
 interface GenreProps {
   genres: Genre;
+  onClickGenre: (gen: Genre) => void;
 }
-const GenreItem = ({ genres }: GenreProps) => {
+const GenreItem = ({ genres, onClickGenre }: GenreProps) => {
   return (
     <List paddingY="5px">
       <ListItem fontSize="lg">
@@ -16,7 +17,9 @@ const GenreItem = ({ genres }: GenreProps) => {
             boxSize="32px"
             borderRadius={8}
           />
-          <Text>{genres.name}</Text>
+          <Button onClick={() => onClickGenre(genres)} variant="link">
+            {genres.name}
+          </Button>
         </HStack>
       </ListItem>
     </List>
