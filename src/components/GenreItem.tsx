@@ -6,8 +6,9 @@ import imgCropper from "../services/img-cropper";
 interface GenreProps {
   genres: Genre;
   onClickGenre: (gen: Genre) => void;
+  selectedGenre: Genre | null;
 }
-const GenreItem = ({ genres, onClickGenre }: GenreProps) => {
+const GenreItem = ({ genres, onClickGenre, selectedGenre }: GenreProps) => {
   return (
     <List paddingY="5px">
       <ListItem fontSize="lg">
@@ -17,7 +18,14 @@ const GenreItem = ({ genres, onClickGenre }: GenreProps) => {
             boxSize="32px"
             borderRadius={8}
           />
-          <Button onClick={() => onClickGenre(genres)} variant="link">
+          <Button
+            fontWeight={
+              genres.id === selectedGenre?.id ? "extrabold" : "normal"
+            }
+            // color={genres.id === selectedGenre?.id ? "yellow" : "white"}
+            onClick={() => onClickGenre(genres)}
+            variant="link"
+          >
             {genres.name}
           </Button>
         </HStack>
