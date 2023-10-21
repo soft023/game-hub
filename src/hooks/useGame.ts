@@ -5,6 +5,7 @@ import { Genre } from "./useGenre";
 
 
 
+
 export interface Platform {
 id: number; 
 name: string;
@@ -22,9 +23,10 @@ export interface Game {
   //   count: number;
   //   results: Game[];
   // }
- const useGame = (selectedGenre:Genre | null) => useData<Game>('/games',{params:{
-  genres : selectedGenre?.id
- }},[selectedGenre?.id]);
+ const useGame = (selectedGenre:Genre | null,selectedPlatform :Platform |null) => useData<Game>('/games',{params:{
+  genres : selectedGenre?.id,
+  platforms : selectedPlatform?.id,
+ }},[selectedGenre?.id,selectedPlatform?.id]);
 // const [games, setGames] = useState<Game[]>([]);
 // const [error, setErrors] = useState("");
 // const [isLoading, setLoading] = useState(false);
