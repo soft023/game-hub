@@ -5,14 +5,16 @@ import GameCardSkeleton from "./GameCardSkeleton";
 import useGame, { Game } from "../hooks/useGame";
 import { Genre } from "../hooks/useGenre";
 import { Platform } from "../hooks/usePlatform";
+import { GameQuery } from "../App";
 
 interface Props {
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gameQuery: GameQuery;
+  // selectedGenre: Genre | null;
+  // selectedPlatform: Platform | null;
 }
 
-const GamesGrid = ({ selectedGenre, selectedPlatform }: Props) => {
-  const { isLoading, data, error } = useGame(selectedGenre, selectedPlatform);
+const GamesGrid = ({ gameQuery }: Props) => {
+  const { isLoading, data, error } = useGame(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (
     <>
