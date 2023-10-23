@@ -2,7 +2,7 @@
 // import apiClient, { CanceledError } from "../services/api-client";
 import { GameQuery } from "../App";
 import useData from "./useData";
-import { Genre } from "./useGenre";
+
 
 
 
@@ -27,7 +27,8 @@ export interface Game {
  const useGame = (gameQuery:GameQuery) => useData<Game>('/games',{params:{
   genres : gameQuery.genre?.id,
   platforms : gameQuery.platform?.id,
-  ordering: gameQuery.sortBy 
+  ordering: gameQuery.sortBy,
+  search: gameQuery.search
  }},[gameQuery]);
 // const [games, setGames] = useState<Game[]>([]);
 // const [error, setErrors] = useState("");
