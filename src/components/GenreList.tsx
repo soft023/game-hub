@@ -1,7 +1,7 @@
 import useData from "../hooks/useData";
 import GenreItem from "./GenreItem";
 import useGenre, { Genre } from "../hooks/useGenre";
-import { Spinner } from "@chakra-ui/react";
+import { Heading, Spinner } from "@chakra-ui/react";
 import GenreSkeleton from "./GenreSkeleton";
 
 interface Props {
@@ -26,6 +26,9 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 
   return (
     <>
+      <Heading fontSize="2xl" marginBottom={3}>
+        Genres
+      </Heading>
       {isLoading &&
         skeGenre.map((ske, index) => (
           <GenreSkeleton key={index}>{ske}</GenreSkeleton>

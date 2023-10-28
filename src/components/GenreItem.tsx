@@ -17,6 +17,7 @@ const GenreItem = ({ genres, onClickGenre, selectedGenre }: GenreProps) => {
             src={imgCropper(genres.image_background)}
             boxSize="32px"
             borderRadius={8}
+            objectFit="cover"
           />
           <Button
             fontWeight={
@@ -25,6 +26,8 @@ const GenreItem = ({ genres, onClickGenre, selectedGenre }: GenreProps) => {
             // color={genres.id === selectedGenre?.id ? "yellow" : "white"}
             onClick={() => onClickGenre(genres)}
             variant="link"
+            whiteSpace="normal"
+            textAlign="left"
           >
             {genres.name}
           </Button>
