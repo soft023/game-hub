@@ -4,6 +4,7 @@ import PlatFormIconList from "./PlatFormIconList";
 import MetaCritic from "./MetaCritic";
 import imgCropper from "../services/img-cropper";
 import GameCardBox from "./GameCardBox";
+import Emoji from "./Emoji";
 
 interface GameProp {
   game: Game;
@@ -21,7 +22,10 @@ const GameCard = ({ game }: GameProp) => {
             />
             <MetaCritic critic={game.metacritic} />
           </HStack>
-          <Heading fontSize="2xl">{game.name}</Heading>
+          <Heading fontSize="2xl">
+            {game.name}
+            <Emoji ratings={game.rating_top} />
+          </Heading>
         </CardBody>
       </Card>
     </GameCardBox>
